@@ -85,29 +85,71 @@
 
     </div>
     <div id="page-container">
-        
+
     </div>
-    <script>/*
+    <script>
+
         const width = 1200;
         const height = 500;
         const margin = { top: 50, right: 50, bottom: 50, left: 50 };
         const innerWidth = width - margin.left - margin.right;
         const innerHeight = height - margin.top - margin.bottom;
-        */
+
         const svg = d3.select("#graph1").append("svg")
             .attr("width", width)
             .attr("height", height)
             .append('g')
             .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
-        d3.csv("https://web.ics.purdue.edu/~omihalic/CGT%20370/merged_withoutdupes_final.csv").then(data => {
+        /*Data structure for reference
+            Date: 2022-01-01
+            AOR_Key: ATLANTA FIELD
+            Encounter_Count 1501.0
+            Count_of_Event 12.0
+            Sum_Qty_(lbs) 6383.96952658546
+        */
+
+        //getting and converting the data
+        d3.csv("https://web.ics.purdue.edu/~omihalic/CGT%20370/Final370/merged_withoutdupes_final.csv").then(data => {
             data.forEach(d => {
-                
+                d.Date = new Date(d.Date);
+                d.Encounter_Count = +d.Encounter_Count;
+                d.Count_of_Event = +d.Count_of_Event;
+                d.Sum_Qty_lbs = +d.Sum_Qty_lbs;
             });
+
+
+            //TASK LIST: Dahlia
+            /*
+            Line chart: Total monthly encounters across all AORs 
+                Show how total encounters fluctuate over fiscal months and highlight major spikes or seasonal patterns.
+            Grouped bar chart: Encounter vs. seizure trends for top AORs
+                Compare regional activity - helps reveal which areas experience both high migrant crossings and drug seizures.
+            Implement interactivity, tooltips, and animated transitions
+            */
+
+            //DAHLIA WORKSPACE
+
+
+            //TASK LIST: Bernadette
+            /*
+            Area Chart (Demographics Over Time)
+                Highlight the shift among encountered migrants (fam vs. single adults).
+            Origin-Destination Map Chart (Flow Map or Choropleth + Arcs)
+                Visualize where migrants are coming from (citizenship) and where they are encountered at the U.S. border.
+                Shows the relationship between origin countries and U.S. border sectors.
+            Reinforces regional trends — for example, more Central American encounters in Texas sectors.
+            Ensure responsiveness and integrate all visualizations into a dashboard layout
+            */
+
+            //BERNADETTE WORKSPACE
+
+
+
 
         });
     </script>
-</div>
+    </div>
 </body>
 
 
