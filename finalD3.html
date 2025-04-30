@@ -105,17 +105,43 @@
         <div id="g1">
             <h3>Graph 1: Monthly Encounters By AOR</h3>
             <div id="graph1" class="graph"></div>
-            <p>This graph is a line chart that shows the monthly encounters by AOR (Area of Responsibility) over time. The x-axis represents the date, while the y-axis represents the number of encounters. Each line represents a different AOR, and the color of each line corresponds to a specific AOR. The graph also includes a dropdown menu that allows users to filter the data by state, enabling them to focus on specific regions. The graph highlights trends in migrant encounters across different AORs and provides insights into regional activity.</p>
-            <p>The graph also includes a tooltip feature that displays additional information when hovering over data points, such as the AOR name, date, and number of encounters. This interactivity enhances the user experience and allows for a deeper understanding of the data. The graph is designed to be responsive and visually appealing, with clear labels and a legend for easy interpretation.</p>
-            <p>The graph also includes a monthly average line that provides a reference point for the overall trend in encounters across all AORs. This line is displayed as a dashed line and is accompanied by a label indicating its significance. The graph is designed to be user-friendly and informative, making it an effective tool for analyzing trends in migrant encounters over time.</p>
-            <p>The graph also includes a legend that provides information about the color coding of the lines, making it easy for users to identify different AORs. The legend is scrollable, allowing users to view all AORs without cluttering the graph. The graph is designed to be visually appealing and easy to interpret, with clear labels and a clean layout.</p>
+            <p>This graph is a line chart that shows the monthly encounters by AOR (Area of Responsibility) over time.
+                The x-axis represents the date, while the y-axis represents the number of encounters. Each line
+                represents a different AOR, and the color of each line corresponds to a specific AOR. The graph also
+                includes a dropdown menu that allows users to filter the data by state, enabling them to focus on
+                specific regions. The graph highlights trends in migrant encounters across different AORs and provides
+                insights into regional activity.</p>
+            <p>The graph also includes a tooltip feature that displays additional information when hovering over data
+                points, such as the AOR name, date, and number of encounters. This interactivity enhances the user
+                experience and allows for a deeper understanding of the data. The graph is designed to be responsive and
+                visually appealing, with clear labels and a legend for easy interpretation.</p>
+            <p>The graph also includes a monthly average line that provides a reference point for the overall trend in
+                encounters across all AORs. This line is displayed as a dashed line and is accompanied by a label
+                indicating its significance. The graph is designed to be user-friendly and informative, making it an
+                effective tool for analyzing trends in migrant encounters over time.</p>
+            <p>The graph also includes a legend that provides information about the color coding of the lines, making it
+                easy for users to identify different AORs. The legend is scrollable, allowing users to view all AORs
+                without cluttering the graph. The graph is designed to be visually appealing and easy to interpret, with
+                clear labels and a clean layout.</p>
         </div>
         <div id="g2">
             <h3>Graph 2: Encounters vs. Seizures by AOR</h3>
             <div id="graph2" class="graph"></div>
-            <p>This graph is a grouped bar chart that compares the number of encounters and seizures by AOR (Area of Responsibility). The x-axis represents the AOR. The y-axis on the left represents the number of encounters and seizures, and the y-axis on the right represents the summed weight of the seizures. Each AOR has three bars: one for the number of encounters (the big one), one for the number of seizures (left), and one for the weight of seizures(right). The bars are color-coded to differentiate between weight and seizures, making it easy to compare the two metrics for each AOR.</p>
-            <p>The graph also includes a tooltip feature that displays additional information when hovering over the bars, such as the AOR name, number of encounters, number of seizures, and weight of seizures. This interactivity enhances the user experience and allows for a deeper understanding of the data. The graph is designed to be responsive and visually appealing, with clear labels and a legend for easy interpretation.</p>
-            <p>The tooltip also includes a statistic for average weight per seizure, allowing viewers to compare how much weight is being carried in each seizure. This is a useful statistic when comparing regions like Laredo and San Diego, because a viewer might assume San Diego carries the most per seizure, but in fact it is a smaller region, Laredo, which takes the crown.</p>
+            <p>This graph is a grouped bar chart that compares the number of encounters and seizures by AOR (Area of
+                Responsibility). The x-axis represents the AOR. The y-axis on the left represents the number of
+                encounters and seizures, and the y-axis on the right represents the summed weight of the seizures. Each
+                AOR has three bars: one for the number of encounters (the big one), one for the number of seizures
+                (left), and one for the weight of seizures(right). The bars are color-coded to differentiate between
+                weight and seizures, making it easy to compare the two metrics for each AOR.</p>
+            <p>The graph also includes a tooltip feature that displays additional information when hovering over the
+                bars, such as the AOR name, number of encounters, number of seizures, and weight of seizures. This
+                interactivity enhances the user experience and allows for a deeper understanding of the data. The graph
+                is designed to be responsive and visually appealing, with clear labels and a legend for easy
+                interpretation.</p>
+            <p>The tooltip also includes statistics for seizure per encounter and average weight per seizure. This allows viewers to compare how
+                often seizures occur and how much weight is being carried in each seizure. This is a useful statistic when comparing regions like
+                Laredo and San Diego, because a viewer might assume San Diego carries the most per seizure, but in fact
+                it is a smaller region, Laredo, which takes the crown.</p>
         </div>
     </div>
     <script>
@@ -598,8 +624,8 @@
                         .attr("class", "tooltip")
                         .attr("transform", `translate(${innerWidth2 - 250},${10})`);
                     tooltip.append("rect")
-                        .attr("width", 220)
-                        .attr("height", 90)
+                        .attr("width", 230)
+                        .attr("height", 105)
                         .attr("fill", "white")
                         .attr("stroke", "black")
                         .attr("rx", 5)
@@ -625,6 +651,10 @@
                     tooltip.append("text")
                         .attr("x", 10)
                         .attr("y", 80)
+                        .text(`Seizures per Encounter: ${d.Count_of_Event > 0 ? d3.format(",.3f")(d.Count_of_Event / d.Encounter_Count) : 0}`);
+                    tooltip.append("text")
+                        .attr("x", 10)
+                        .attr("y", 95)
                         .text(`Avg lbs per Seizure: ${d.Count_of_Event > 0 ? d3.format(",.2f")(d.Sum_Qty_lbs / d.Count_of_Event) : 0}`);
                 })
                 .on("mouseout", function () {
@@ -646,8 +676,8 @@
                         .attr("class", "tooltip")
                         .attr("transform", `translate(${innerWidth2 - 250},${10})`);
                     tooltip.append("rect")
-                        .attr("width", 220)
-                        .attr("height", 90)
+                        .attr("width", 230)
+                        .attr("height", 105)
                         .attr("fill", "white")
                         .attr("stroke", "black")
                         .attr("rx", 5)
@@ -673,6 +703,10 @@
                     tooltip.append("text")
                         .attr("x", 10)
                         .attr("y", 80)
+                        .text(`Seizures per Encounter: ${d.Count_of_Event > 0 ? d3.format(",.3f")(d.Count_of_Event / d.Encounter_Count) : 0}`);
+                    tooltip.append("text")
+                        .attr("x", 10)
+                        .attr("y", 95)
                         .text(`Avg lbs per Seizure: ${d.Count_of_Event > 0 ? d3.format(",.2f")(d.Sum_Qty_lbs / d.Count_of_Event) : 0}`);
                 })
                 .on("mouseout", function () {
@@ -695,8 +729,8 @@
                         .attr("class", "tooltip")
                         .attr("transform", `translate(${innerWidth2 - 250},${10})`);
                     tooltip.append("rect")
-                        .attr("width", 220)
-                        .attr("height", 90)
+                        .attr("width", 230)
+                        .attr("height", 105)
                         .attr("fill", "white")
                         .attr("stroke", "black")
                         .attr("rx", 5)
@@ -722,6 +756,10 @@
                     tooltip.append("text")
                         .attr("x", 10)
                         .attr("y", 80)
+                        .text(`Seizures per Encounter: ${d.Count_of_Event > 0 ? d3.format(",.3f")(d.Count_of_Event / d.Encounter_Count) : 0}`);
+                    tooltip.append("text")
+                        .attr("x", 10)
+                        .attr("y", 95)
                         .text(`Avg lbs per Seizure: ${d.Count_of_Event > 0 ? d3.format(",.2f")(d.Sum_Qty_lbs / d.Count_of_Event) : 0}`);
                 })
                 .on("mouseout", function () {
