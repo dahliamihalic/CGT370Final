@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Final Project</title>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div id="header">
+        <h1>Final Project: Trends in Migrant Encounters and Border Seizures</h1>
+        <h2>Bernadette Fannin and Dahlia Mihalic</h2>
+        <center>
+            <p>This project explores recent trends in migrant encounters and drug seizures across the U.S. border. Using
+                interactive charts, we break down regional patterns, seasonal shifts, and enforcement outcomes across
+                different states and sectors. Each section highlights a different part of the story- monthly encounter
+                patterns, seizure activity, migrant origins, and the types of drugs being seized by state.</p>
+        </center>
+    </div>
+
+    <div id="page-container">
+
+        <!-- Graph 1: Line Chart by Dahlia-->
+        <div id="g1">
+            <h3>Monthly Encounters by AOR</h3>
+            <div id="graph1" class="graph"></div>
+            <div class="description-box">
+                <div class="description-block">
+                    <h4>Overview</h4>
+                    <p>This graph shows the number of monthly encounters by AOR (Area of Responsibility) over time. The
+                        x-axis represents the date, while the y-axis shows how many encounters occurred that month. Each
+                        colored line stands for a different AOR, making it easy to spot trends across regions.</p>
+                </div>
+                <div class="description-block">
+                    <h4>Filter by State</h4>
+                    <p>There is a dropdown menu that lets you filter the chart by state. This makes it easier to focus
+                        on specific areas and see how they compare to others.</p>
+                </div>
+                <div class="description-block">
+                    <h4>Tooltip Interactions</h4>
+                    <p>When you hover over the lines, a tooltip pops up showing details like the AOR name, date, and
+                        number of encounters for that point in time. It is a quick way to explore the data without
+                        losing the bigger picture.</p>
+                </div>
+                <div class="description-block">
+                    <h4>Average Line</h4>
+                    <p>The chart also includes a dashed monthly average line. It acts as a reference point, so you can
+                        easily see which AORs are trending above or below the overall average.</p>
+                </div>
+                <div class="description-block">
+                    <h4>Legend & Design</h4>
+                    <p>The scrollable legend shows all the AORs with matching colors. It's designed to be clean and
+                        uncluttered so you can focus on the data. Overall, the chart is simple to use, responsive, and
+                        informative.</p>
+                </div>
+                <div class="description-block">
+                    <h4>Insight</h4>
+                    <p>The data shows that San Diego and Laredo are consistently among the highest in monthly
+                        encounters, especially during the spring and fall months. Tucson and Del Rio also show
+                        noticeable spikes mid-year. These trends help highlight how certain regions experience more
+                        activity depending on the season, and point to how migration patterns shift throughout the year.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Graph 2: Migration Flow Map by Bernadette-->
+        <div id="map-container" class="graph">
+            <h3>Origin to Destination: Migration Flow Map</h3>
+        </div>
+
+        <div id="country-detail-charts" style="display: flex; gap: 40px; margin-top: 30px;">
+            <div id="destination-chart"></div>
+            <div id="demographic-chart"></div>
+        </div>
+
+        <div class="description-box">
+            <div class="description-block">
+                <h4>Overview</h4>
+                <p>This map shows where migrants are coming from and where they're being encountered at the U.S. border.
+                    The arcs connect each country of citizenship to the U.S. sector where those encounters were
+                    reported.</p>
+            </div>
+            <div class="description-block">
+                <h4>Interactivity</h4>
+                <p>Hovering over a country highlights the arcs showing where people from that country are arriving. The
+                    thicker the arc, the more encounters from that country to that destination.</p>
+            </div>
+            <div class="description-block">
+                <h4>Country Drill-down</h4>
+                <p>Clicking a country reveals more details like who's arriving (demographic breakdowns) and which U.S.
+                    states they're arriving in most. These charts update automatically when you click.</p>
+            </div>
+            <div class="description-block">
+                <h4>Insight</h4>
+                <p>Mexico, Guatemala, and Venezuela are some of the top origin countries, and most of their encounters
+                    are happening in Texas and Arizona. We also see rising numbers from places like Haiti and China,
+                    showing how the migration picture is expanding.</p>
+            </div>
+        </div>
+
+
+
+        <!-- Graph 3: Bar Chart by Dahlia-->
+        <div id="g2">
+            <h3>Encounters vs. Seizures by AOR</h3>
+            <div id="graph2" class="graph"></div>
+            <div class="description-box">
+                <div class="description-block">
+                    <h4>Overview</h4>
+                    <p>This graph is a grouped bar chart that compares the number of encounters and seizures by AOR
+                        (Area of Responsibility). The x-axis shows each AOR, while the y-axes show two different
+                        measures: the number of encounters and seizures on the left, and the total weight of seizures on
+                        the right.</p>
+                </div>
+                <div class="description-block">
+                    <h4>Chart Breakdown</h4>
+                    <p>Each AOR has three bars: one for the number of encounters (the tall one), one for the number of
+                        seizures, and one for the weight of seizures. The bars are color-coded so you can easily tell
+                        the difference between the categories.</p>
+                </div>
+                <div class="description-block">
+                    <h4>Tooltip Details</h4>
+                    <p>Hovering over any bar brings up a tooltip with extra info like the AOR name, number of
+                        encounters, seizures, and the total weight of seizures. This makes it easy to get the full
+                        picture without leaving the chart.</p>
+                </div>
+                <div class="description-block">
+                    <h4>Extra Stats</h4>
+                    <p>The tooltip also shows stats like seizures per encounter and average weight per seizure. These
+                        are great for comparing how often seizures happen and how much is being carried when they do.
+                    </p>
+                </div>
+                <div class="description-block">
+                    <h4>Insight</h4>
+                    <p>This chart shows that even though San Diego has a high number of encounters, Laredo stands out
+                        when it comes to average weight per seizure. It is a reminder that more activity doesn't always
+                        mean higher volume; smaller sectors can still lead the way in certain metrics.</p>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Graph 4: Treemap by Bernadette-->
+        <div id="g3">
+            <h3>Drug Quantities by State</h3>
+            <div id="graph3" class="graph"></div>
+            <div class="description-box">
+                <div class="description-block">
+                    <h4>Overview</h4>
+                    <p>This treemap shows the total weight of drugs seized by state. The size of each box represents the
+                        total quantity of drugs seized in that state between 2022 and 2024. The bigger the box, the more
+                        that state contributed to total seizures.</p>
+                </div>
+                <div class="description-block">
+                    <h4>Drill-down View</h4>
+                    <p>Clicking on a state zooms in to show the breakdown by drug type. Each drug is also sized by how
+                        much was seized, giving you a closer look at what's showing up where.</p>
+                </div>
+                <div class="description-block">
+                    <h4>Navigation</h4>
+                    <p>Clicking on any drug box will return you to the main view. This makes it easy to explore specific
+                        states and still quickly zoom back out to see the full picture.</p>
+                </div>
+                <div class="description-block">
+                    <h4>Tooltip</h4>
+                    <p>A floating tooltip helps guide users and shows exact numbers when you hover. It's there to help
+                        make sense of the data at every step.</p>
+                </div>
+                <div class="description-block">
+                    <h4>Insight</h4>
+                    <p>The treemap highlights how some states—like Texas and Arizona—lead not only in total seizures but
+                        also in specific drugs like fentanyl and methamphetamine. It's a helpful way to compare both
+                        volume and substance type across regions.</p>
+                </div>
+            </div>
+            <div id="drug-breakdown" style="margin-top: 20px;"></div>
+        </div>
+
+        <div class="footer">Data Source: U.S. Customs and Border Protection | Visualization by Bernadette and Dahlia
+        </div>
+
+        <!-- end of #page-container -->
+
+        <!-- Dahlia's graphs -->
+        <!--
+        Grouped bar chart: Encounter vs. seizure trends for top AORs
+        Compare regional activity - helps reveal which areas experience both high migrant crossings and drug seizures.
+        Implement interactivity, tooltips, and animated transitions
+
+        Graph 2:
+        Going to be encounters on the bottom and seizures on top split in half
+        (half being the number of seizures, half being the weight of the seizures)
+    -->
+        <script src="dahlia.js"></script>
+
+        <!-- Bernadette's graphs -->
+        <!--
+        Area Chart (Demographics Over Time)
+        Highlight the shift among encountered migrants (fam vs. single adults).
+
+        Origin-Destination Map Chart (Flow Map or Choropleth + Arcs)
+        Visualize where migrants are coming from (citizenship) and where they are encountered at the U.S. border.
+        Shows the relationship between origin countries and U.S. border sectors.
+        Reinforces regional trends — for example, more Central American encounters in Texas sectors.
+
+        Ensure responsiveness and integrate all visualizations into a dashboard layout
+    -->
+        <script src="treemap.js"></script>
+        <script src="map.js"></script>
+
+</body>
+
+</html>
